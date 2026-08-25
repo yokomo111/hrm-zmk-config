@@ -115,6 +115,8 @@
                 <&to_ru>;
 
             label = "EN";
+            wait-ms = <15>;
+            tap-ms = <15>;
         };
 
         lg_tog: lg_tog {
@@ -202,10 +204,10 @@
 
         spec {
             bindings = <
-&none  &sync  &none  &none  &none  &bootloader    &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none  &none  &none          &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none  &none  &sys_reset     &none  &none  &none  &none  &none  &none
-              &none  &none  &none  &none          &none  &none  &none  &none
+&none  &sync  &none  &none  &none  &bootloader    &none       &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none  &none          &none       &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none  &sys_reset     &sys_reset  &none  &none  &none  &none  &none
+              &none  &none  &none  &none          &none       &none  &none  &none
             >;
         };
     };
