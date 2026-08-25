@@ -72,8 +72,8 @@
             #binding-cells = <0>;
             bindings = <&kp LG(SPACE)>;
             label = "TO_RU";
-            wait-ms = <15>;
-            tap-ms = <15>;
+            wait-ms = <5>;
+            tap-ms = <5>;
         };
 
         to_en: to_en {
@@ -81,8 +81,8 @@
             #binding-cells = <0>;
             bindings = <&kp LG(SPACE)>;
             label = "TO_EN";
-            wait-ms = <15>;
-            tap-ms = <15>;
+            wait-ms = <5>;
+            tap-ms = <5>;
         };
 
         layer_en: layer_en {
@@ -90,8 +90,8 @@
             #binding-cells = <0>;
             bindings = <&to 0 &to_en>;
             label = "LAYER_EN";
-            wait-ms = <15>;
-            tap-ms = <15>;
+            wait-ms = <5>;
+            tap-ms = <5>;
         };
 
         layer_ru: layer_ru {
@@ -99,8 +99,8 @@
             #binding-cells = <0>;
             bindings = <&to 1 &to_ru>;
             label = "LAYER_RU";
-            wait-ms = <15>;
-            tap-ms = <15>;
+            wait-ms = <5>;
+            tap-ms = <5>;
         };
 
         en: en {
@@ -117,8 +117,8 @@
                 <&to_ru>;
 
             label = "EN";
-            wait-ms = <15>;
-            tap-ms = <15>;
+            wait-ms = <5>;
+            tap-ms = <5>;
         };
 
         lg_tog: lg_tog {
@@ -126,7 +126,7 @@
             #binding-cells = <0>;
             bindings = <&kp LG(SPACE) &tog 1>;
             label = "LG_TOG";
-            tap-ms = <40>;
+            tap-ms = <5>;
         };
 
         sync: sync {
@@ -134,8 +134,8 @@
             #binding-cells = <0>;
             bindings = <&layer_ru &layer_ru>;
             label = "SYNC";
-            wait-ms = <2>;
-            tap-ms = <40>;
+            wait-ms = <5>;
+            tap-ms = <5>;
         };
     };
 
