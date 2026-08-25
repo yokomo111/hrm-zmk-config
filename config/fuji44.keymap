@@ -2,7 +2,6 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/outputs.h>
 
 / {
     behaviors {
@@ -44,36 +43,52 @@
 &none  &kp Q        &kp W        &kp E          &kp R         &kp T        &kp Y    &kp U         &kp I         &kp O           &kp P                &none
 &none  &hml LGUI A  &hml LALT S  &hml LSHIFT D  &hml LCTRL F  &kp G        &kp H    &hmr RCTRL J  &hmr RSHFT K  &hmr LALT L     &hmr RGUI SEMICOLON  &none
 &none  &kp Z        &kp X        &kp C          &kp V         &kp B        &kp N    &kp M         &kp COMMA     &kp DOT         &kp RIGHT_BRACE      &none
-                    &none        &kp TAB        &mo 2         &kp SPACE    &kp RET  &mo 3         &kp BSPC      &kp LEFT_BRACE
+                    &none        &kp TAB        &mo 0         &kp SPACE    &kp RET  &mo 2         &kp BSPC      &kp LEFT_BRACE
             >;
         };
 
-        RU {
+        ru {
             bindings = <
 &none  &kp RU_CYRILLIC_TSE       &kp RU_CYRILLIC_TSE         &kp RU_CYRILLIC_U           &kp RU_CYRILLIC_KA        &kp RU_CYRILLIC_IE    &kp RU_CYRILLIC_EN  &kp RU_CYRILLIC_GHE        &kp RU_CYRILLIC_SHA        &kp RU_CYRILLIC_SHCHA     &kp RU_CYRILLIC_ZE         &none
 &none  &hml LGUI RU_CYRILLIC_EF  &hml LALT RU_CYRILLIC_YERU  &hml LSHIFT RU_CYRILLIC_VE  &hml LCTRL RU_CYRILLIC_A  &kp RU_CYRILLIC_PE    &kp RU_CYRILLIC_ER  &hmr RCTRL RU_CYRILLIC_O   &hml RSHFT RU_CYRILLIC_EL  &hmr LALT RU_CYRILLIC_DE  &hmr RGUI RU_CYRILLIC_ZHE  &none
 &none  &kp RU_CYRILLIC_YA        &kp RU_CYRILLIC_CHE         &kp RU_CYRILLIC_ES          &kp RU_CYRILLIC_EM        &kp RU_CYRILLIC_I     &kp RU_CYRILLIC_TE  &kp RU_CYRILLIC_SOFT_SIGN  &kp RU_CYRILLIC_BE         &kp RU_CYRILLIC_YU        &kp RU_CYRILLIC_E          &none
-                                 &kp RU_CYRILLIC_HARD_SIGN   &trans                      &trans                    &trans                &trans              &trans                     &trans                     &kp RU_CYRILLIC_HA
+                                 &kp RU_CYRILLIC_HARD_SIGN   &trans                      &trans                    &trans                &trans              &mo 3                      &trans                     &kp RU_CYRILLIC_HA
             >;
         };
 
-        numbers_layer {
-            display-name = "Numbers";
+        sym_en {
             bindings = <
-&none  &kp N1    &kp N2  &kp N3    &kp N4    &kp N5       &kp N6     &kp N7    &kp N8     &kp N9    &kp N0    &none
-&none  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS  &kp ASTRK  &kp LPAR  &kp RPAR  &none
-&none  &kp F1    &kp F2  &kp F3    &kp F4    &kp F5       &kp F6     &kp F7    &kp F8     &kp F9    &kp F10   &none
-                 &trans  &trans    &trans    &trans       &trans     &trans    &trans     &trans
+&none  &kp TILDE  &kp LESS_THAN  &kp EQUAL  &kp GREATER_THAN  &kp DQT     &kp CARET  &kp LBKT  &kp UNDERSCORE  &kp RBKT  &kp DOLLAR  &none
+&none  &kp BSLH   &kp LPAR       &kp MINUS  &kp RPAR          &kp PLUS    &kp PRCNT  &kp LBRC  &kp SEMI        &kp RBRC  &kp EXCL    &none
+&none  &kp HASH   &kp STAR       &kp COLON  &kp FSLH          &kp AMPS    &kp AT     &kp PIPE  &kp COMMA       &kp DOT   &kp QMARK   &none
+                  &none          &kp SQT    &none             &none       &none      &none     &none           &none
             >;
         };
 
-        navigation_layer {
-            display-name = "Navigation";
+        sym_ru {
             bindings = <
-&none  &kp ESC   &kp UP    &kp TAB    &kp PG_UP  &kp DEL     &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2    &bt BT_SEL 3  &bt BT_SEL 4  &none
-&none  &kp LEFT  &kp DOWN  &kp RIGHT  &kp PG_DN  &kp BSPC    &kp C_MUTE    &kp C_VOL_DN  &kp C_VOL_UP    &kp C_PP      &bt BT_CLR    &none
-&none  &kp LGUI  &kp LALT  &kp LSHFT  &kp LCTRL  &kp CAPS    &out OUT_USB  &out OUT_BLE  &bt BT_CLR_ALL  &bootloader   &sys_reset    &none
-                 &trans    &trans     &trans     &trans      &trans        &trans        &trans          &trans
+&none  &kp TILDE         &kp LESS_THAN  &kp EQUAL     &kp GREATER_THAN  &kp RU_DQT    &kp CARET  &kp LBKT  &kp RU_UNDERSCORE  &kp RBKT    &kp DOLLAR    &none
+&none  &kp RU_BACKSLASH  &kp LPAR       &kp MINUS     &kp RPAR          &kp PLUS      &kp PRCNT  &kp LBRC  &kp RU_SEMI        &kp RBRC    &kp RU_EXCL   &none
+&none  &kp HASH          &kp RU_STAR    &kp RU_COLON  &kp RU_FSLH       &kp AMPS      &kp AT     &kp PIPE  &kp RU_COMMA       &kp RU_DOT  &kp RU_QMARK  &none
+                         &none          &kp SQT       &none             &none         &none      &none     &none              &none
+            >;
+        };
+
+        nav {
+            bindings = <
+&none  &kp N1   &kp N2    &kp N3     &kp N4     &kp N5        &kp N6    &kp N7              &kp N8          &kp N9               &kp N0        &none
+&none  &kp ESC  &kp LALT  &kp LSHFT  &kp LCTRL  &kp PSCRN     &kp TAB   &kp LC(LEFT_ARROW)  &kp UP_ARROW    &kp LC(RIGHT_ARROW)  &kp CAPSLOCK  &none
+&none  &none    &none     &none      &none      &kp DELETE    &kp HOME  &kp LEFT_ARROW      &kp DOWN_ARROW  &kp RIGHT_ARROW      &kp END       &none
+                &none     &kp SQT    &none      &none         &none     &none               &none           &none
+            >;
+        };
+
+        adj {
+            bindings = <
+&none  &none  &kp F1  &kp F2   &kp F3   &kp F4     &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2    &bt BT_SEL 3  &bt BT_CLR      &none
+&none  &none  &kp F5  &kp F6   &kp F7   &kp F8     &none         &kp LCTRL     &kp LEFT_SHIFT  &kp LALT      &kp LGUI        &none
+&none  &none  &kp F9  &kp F10  &kp F11  &kp F12    &none         &none         &none           &none         &studio_unlock  &none
+              &trans  &trans   &trans   &trans     &trans        &trans        &trans          &trans
             >;
         };
     };
