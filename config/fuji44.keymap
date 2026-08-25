@@ -124,6 +124,7 @@
             #binding-cells = <0>;
             bindings = <&kp LG(SPACE) &tog 1>;
             label = "LG_TOG";
+            tap-ms = <40>;
         };
 
         sync: sync {
@@ -131,6 +132,8 @@
             #binding-cells = <0>;
             bindings = <&layer_ru &layer_en>;
             label = "SYNC";
+            wait-ms = <2>;
+            tap-ms = <40>;
         };
     };
 
