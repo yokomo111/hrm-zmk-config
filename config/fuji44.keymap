@@ -4,6 +4,12 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 
+&mt {
+    quick-tap-ms = <200>;
+    require-prior-idle-ms = <125>;
+    flavor = "tap-preferred";
+};
+
 / {
     behaviors {
         hml: homerow_mod_left {
@@ -129,7 +135,7 @@
     keymap {
         compatible = "zmk,keymap";
 
-        EN {
+        en {
             display-name = "Base";
             bindings = <
 &none  &kp Q        &kp W        &kp E          &kp R         &kp T        &kp Y    &kp U         &kp I         &kp O        &kp P                &none
@@ -146,6 +152,8 @@
 &none  &kp RU_CYRILLIC_YA        &kp RU_CYRILLIC_CHE         &kp RU_CYRILLIC_ES          &kp RU_CYRILLIC_EM        &kp RU_CYRILLIC_I     &kp RU_CYRILLIC_TE  &kp RU_CYRILLIC_SOFT_SIGN  &kp RU_CYRILLIC_BE         &kp RU_CYRILLIC_YU        &kp RU_CYRILLIC_E          &none
                                  &kp RU_CYRILLIC_HARD_SIGN   &trans                      &to 4                     &trans                &trans              &mo 3                      &trans                     &kp RU_CYRILLIC_HA
             >;
+
+            label = "Ru";
         };
 
         sym_en {
@@ -155,6 +163,8 @@
 &none  &kp HASH   &kp STAR       &kp COLON  &kp FSLH          &kp AMPS    &kp AT     &kp PIPE  &kp COMMA       &kp DOT   &kp QMARK   &none
                   &none          &kp SQT    &mo 5             &none       &trans     &none     &trans          &none
             >;
+
+            label = "Symbolss";
         };
 
         sym_ru {
@@ -164,6 +174,8 @@
 &none  &en HASH          &kp RU_STAR    &kp RU_COLON  &kp RU_FSLH       &en AMPS      &en AT     &en PIPE  &kp RU_COMMA       &kp RU_DOT  &kp RU_QMARK  &none
                          &none          &kp SQT       &mo 5             &trans        &trans     &none     &trans             &none
             >;
+
+            label = "Symbols";
         };
 
         nav {
@@ -173,6 +185,8 @@
 &none  &none    &none     &none      &none      &kp DELETE    &kp HOME  &kp LEFT_ARROW      &kp DOWN_ARROW  &kp RIGHT_ARROW      &kp END       &none
                 &none     &trans     &none      &trans        &trans    &mo 5               &trans          &none
             >;
+
+            label = "Nav";
         };
 
         adj {
@@ -182,6 +196,8 @@
 &none  &none  &kp F9  &kp F10  &kp F11  &kp F12    &none         &none         &none           &none         &studio_unlock  &none
               &trans  &trans   &trans   &trans     &trans        &trans        &trans          &trans
             >;
+
+            label = "Adjust";
         };
 
         spec {
