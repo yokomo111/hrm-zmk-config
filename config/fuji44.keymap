@@ -103,7 +103,7 @@
             tap-ms = <15>;
         };
 
-        en: en {
+       en: en {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
             bindings =
