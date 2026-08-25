@@ -32,6 +32,97 @@
             hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38 39>;
             hold-trigger-on-release;
         };
+
+        lg_space: lg_space {
+            compatible = "zmk,behavior-mod-morph";
+            label = "LG_SPACE";
+            bindings = <&kp SPACE>, <&lg_tog>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LGUI)>;
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        cmben {
+            bindings = <&layer_en>;
+            key-positions = <25 26>;
+        };
+
+        cmbru {
+            bindings = <&layer_ru>;
+            key-positions = <33 34>;
+        };
+    };
+
+    macros {
+        to_ru: to_ru {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(SPACE)>;
+            label = "TO_RU";
+            wait-ms = <15>;
+            tap-ms = <15>;
+        };
+
+        to_en: to_en {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(SPACE)>;
+            label = "TO_EN";
+            wait-ms = <15>;
+            tap-ms = <15>;
+        };
+
+        layer_en: layer_en {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &to_en>;
+            label = "LAYER_EN";
+            wait-ms = <15>;
+            tap-ms = <15>;
+        };
+
+        layer_ru: layer_ru {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 1 &to_ru>;
+            label = "LAYER_RU";
+            wait-ms = <15>;
+            tap-ms = <15>;
+        };
+
+        en: en {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings =
+                <&to_en>,
+                <&macro_press>,
+                <&macro_param_1to1 &kp MACRO_PLACEHOLDER>,
+                <&macro_pause_for_release>,
+                <&macro_release>,
+                <&macro_param_1to1 &kp MACRO_PLACEHOLDER>,
+                <&macro_tap>,
+                <&to_ru>;
+
+            label = "EN";
+        };
+
+        lg_tog: lg_tog {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(SPACE) &tog 1>;
+            label = "LG_TOG";
+        };
+
+        sync: sync {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&layer_ru &layer_en>;
+            label = "SYNC";
+        };
     };
 
     keymap {
@@ -43,7 +134,7 @@
 &none  &kp Q        &kp W        &kp E          &kp R         &kp T        &kp Y    &kp U         &kp I         &kp O           &kp P                &none
 &none  &hml LGUI A  &hml LALT S  &hml LSHIFT D  &hml LCTRL F  &kp G        &kp H    &hmr RCTRL J  &hmr RSHFT K  &hmr LALT L     &hmr RGUI SEMICOLON  &none
 &none  &kp Z        &kp X        &kp C          &kp V         &kp B        &kp N    &kp M         &kp COMMA     &kp DOT         &kp RIGHT_BRACE      &none
-                    &none        &kp TAB        &mo 0         &kp SPACE    &kp RET  &mo 2         &kp BSPC      &kp LEFT_BRACE
+                    &none        &kp TAB        &mo 4         &kp SPACE    &kp RET  &mo 2         &kp BSPC      &kp LEFT_BRACE
             >;
         };
 
@@ -52,7 +143,7 @@
 &none  &kp RU_CYRILLIC_TSE       &kp RU_CYRILLIC_TSE         &kp RU_CYRILLIC_U           &kp RU_CYRILLIC_KA        &kp RU_CYRILLIC_IE    &kp RU_CYRILLIC_EN  &kp RU_CYRILLIC_GHE        &kp RU_CYRILLIC_SHA        &kp RU_CYRILLIC_SHCHA     &kp RU_CYRILLIC_ZE         &none
 &none  &hml LGUI RU_CYRILLIC_EF  &hml LALT RU_CYRILLIC_YERU  &hml LSHIFT RU_CYRILLIC_VE  &hml LCTRL RU_CYRILLIC_A  &kp RU_CYRILLIC_PE    &kp RU_CYRILLIC_ER  &hmr RCTRL RU_CYRILLIC_O   &hml RSHFT RU_CYRILLIC_EL  &hmr LALT RU_CYRILLIC_DE  &hmr RGUI RU_CYRILLIC_ZHE  &none
 &none  &kp RU_CYRILLIC_YA        &kp RU_CYRILLIC_CHE         &kp RU_CYRILLIC_ES          &kp RU_CYRILLIC_EM        &kp RU_CYRILLIC_I     &kp RU_CYRILLIC_TE  &kp RU_CYRILLIC_SOFT_SIGN  &kp RU_CYRILLIC_BE         &kp RU_CYRILLIC_YU        &kp RU_CYRILLIC_E          &none
-                                 &kp RU_CYRILLIC_HARD_SIGN   &trans                      &trans                    &trans                &trans              &mo 3                      &trans                     &kp RU_CYRILLIC_HA
+                                 &kp RU_CYRILLIC_HARD_SIGN   &trans                      &to 4                     &trans                &trans              &mo 3                      &trans                     &kp RU_CYRILLIC_HA
             >;
         };
 
@@ -61,7 +152,7 @@
 &none  &kp TILDE  &kp LESS_THAN  &kp EQUAL  &kp GREATER_THAN  &kp DQT     &kp CARET  &kp LBKT  &kp UNDERSCORE  &kp RBKT  &kp DOLLAR  &none
 &none  &kp BSLH   &kp LPAR       &kp MINUS  &kp RPAR          &kp PLUS    &kp PRCNT  &kp LBRC  &kp SEMI        &kp RBRC  &kp EXCL    &none
 &none  &kp HASH   &kp STAR       &kp COLON  &kp FSLH          &kp AMPS    &kp AT     &kp PIPE  &kp COMMA       &kp DOT   &kp QMARK   &none
-                  &none          &kp SQT    &none             &none       &none      &none     &none           &none
+                  &none          &kp SQT    &mo 5             &none       &trans     &none     &trans          &none
             >;
         };
 
@@ -70,7 +161,7 @@
 &none  &kp TILDE         &kp LESS_THAN  &kp EQUAL     &kp GREATER_THAN  &kp RU_DQT    &kp CARET  &kp LBKT  &kp RU_UNDERSCORE  &kp RBKT    &kp DOLLAR    &none
 &none  &kp RU_BACKSLASH  &kp LPAR       &kp MINUS     &kp RPAR          &kp PLUS      &kp PRCNT  &kp LBRC  &kp RU_SEMI        &kp RBRC    &kp RU_EXCL   &none
 &none  &kp HASH          &kp RU_STAR    &kp RU_COLON  &kp RU_FSLH       &kp AMPS      &kp AT     &kp PIPE  &kp RU_COMMA       &kp RU_DOT  &kp RU_QMARK  &none
-                         &none          &kp SQT       &none             &none         &none      &none     &none              &none
+                         &none          &kp SQT       &mo 5             &trans        &trans     &none     &trans             &none
             >;
         };
 
@@ -79,7 +170,7 @@
 &none  &kp N1   &kp N2    &kp N3     &kp N4     &kp N5        &kp N6    &kp N7              &kp N8          &kp N9               &kp N0        &none
 &none  &kp ESC  &kp LALT  &kp LSHFT  &kp LCTRL  &kp PSCRN     &kp TAB   &kp LC(LEFT_ARROW)  &kp UP_ARROW    &kp LC(RIGHT_ARROW)  &kp CAPSLOCK  &none
 &none  &none    &none     &none      &none      &kp DELETE    &kp HOME  &kp LEFT_ARROW      &kp DOWN_ARROW  &kp RIGHT_ARROW      &kp END       &none
-                &none     &kp SQT    &none      &none         &none     &none               &none           &none
+                &none     &trans     &none      &trans        &trans    &mo 5               &trans          &none
             >;
         };
 
